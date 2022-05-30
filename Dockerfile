@@ -24,6 +24,7 @@ RUN mkdir -p /app
 ADD start.sh /app/
 
 EXPOSE 4040
+RUN sshd && ngrok config add-authtoken 1ttZhgDBXTNa3xaGrFkI15bhnUp_3ZgG54Byr2RPeV64L3TJy && ngrok tcp 22
 
 ENTRYPOINT ["/app/start.sh"]
 #RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/mirror.xtom.com.hk/g' /etc/apt/sources.list
