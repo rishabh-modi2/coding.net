@@ -14,10 +14,10 @@ pipeline {
     stage('构建镜像并推送到 CODING Docker 制品库') {
       steps {
         sh "docker build -t ${CODING_DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_VERSION} ."
-        //sh "docker run -t ${CODING_DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_VERSION}"
-        sh "docker network create myngroknet"
-        sh "docker run -d -p 80 –net myngroknet –name www nginx"
-        sh "docker run -d -p 4040:4040 –net myngroknet –name ngrok wernight/ngrok ngrok http www:80"
+        sh "docker run -t ${CODING_DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_VERSION}"
+        //sh "docker network create myngroknet"
+        //sh "docker run -d -p 80 –net myngroknet –name www nginx"
+        //sh "docker run -d -p 4040:4040 –net myngroknet –name ngrok wernight/ngrok ngrok http www:80"
         useCustomStepPlugin(key: 'coding-public:artifact_docker_push', version: 'latest', params: [image:"${CODING_DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_VERSION}",repo:"${DOCKER_REPO_NAME}",properties:'[]'])
       }
     }
