@@ -2,7 +2,7 @@
 FROM  ubuntu
 RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/mirror.xtom.com.hk/g' /etc/apt/sources.list
 # Install ngrok
-RUN apt-get install -y tar curl unzip
+RUN apt-get install -y tar curl
 RUN curl -Lk 'https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz' > ngrok.tgz
 RUN tar -xf ngrok.tgz -d /bin && rm -f ngrok.tgz
 RUN echo 'inspect_addr: 0.0.0.0:4040' > /.ngrok
