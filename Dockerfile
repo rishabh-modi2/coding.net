@@ -1,6 +1,6 @@
 
-FROM        ubuntu:14.04
-
+FROM  ubuntu
+RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/mirror.xtom.com.hk/g' /etc/apt/sources.list
 # Install ngrok
 RUN apt-get install -y tar curl unzip
 RUN curl -Lk 'https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz' > ngrok.tgz
